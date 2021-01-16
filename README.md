@@ -4,7 +4,6 @@ Since the recent support for EFS in Fargate, we can now run a fully Serverless J
 
 This stack can be used as a starting point to build a production ready Jenkins on AWS. 
 
-More details can be found on [my blog post](https://blog.haidara.io/post/jenkins-aws-fargate/) (in french).
 
 ## How it works
 This stack will deploy Jenkins Master on ECS Fargate. It uses a docker image based on the [official Jenkins](https://github.com/jenkinsci/docker). See `docker/` folder.
@@ -82,3 +81,5 @@ terraform apply
  - [EFS IAM Authorization and access point](https://aws.amazon.com/blogs/aws/new-for-amazon-efs-iam-authorization-and-access-points/)
  - https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-nfs-permissions.html
  - [Jenkins architecture for scale](https://www.jenkins.io/doc/book/architecting-for-scale/#distributed-builds-architecture)
+ - [Mohamed El Mouctar Haidara](https://github.com/haidaraM/terraform-jenkins-aws-fargate)
+ 

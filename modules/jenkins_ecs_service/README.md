@@ -4,8 +4,6 @@ Since the recent support for EFS in Fargate, we can now run a fully Serverless J
 
 This stack can be used as a starting point to build a production ready Jenkins on AWS. 
 
-More details can be found on [my blog post](https://blog.haidara.io/post/jenkins-aws-fargate/) (in french).
-
 ## How it works
 This stack will deploy Jenkins Master on ECS Fargate. It uses a docker image based on the [official Jenkins](https://github.com/jenkinsci/docker). See `docker/` folder.
 

@@ -82,4 +82,5 @@ terraform apply
  - https://docs.aws.amazon.com/efs/latest/ug/accessing-fs-nfs-permissions.html
  - [Jenkins architecture for scale](https://www.jenkins.io/doc/book/architecting-for-scale/#distributed-builds-architecture)
  - [Mohamed El Mouctar Haidara](https://github.com/haidaraM/terraform-jenkins-aws-fargate)
+ - [init.groovy.d](https://medium.com/the-devops-ship/jenkins-use-case-jenkins-startup-script-to-set-the-system-properties-2de8cd1cbe4d)
  

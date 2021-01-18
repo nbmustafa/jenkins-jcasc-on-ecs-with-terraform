@@ -83,4 +83,7 @@ terraform apply
  - [Jenkins architecture for scale](https://www.jenkins.io/doc/book/architecting-for-scale/#distributed-builds-architecture)
  - [Mohamed El Mouctar Haidara](https://github.com/haidaraM/terraform-jenkins-aws-fargate)
  - [init.groovy.d](https://medium.com/the-devops-ship/jenkins-use-case-jenkins-startup-script-to-set-the-system-properties-2de8cd1cbe4d)
+ - [Setting Jenkins Credentials with Groovy](https://nickcharlton.net/posts/setting-jenkins-credentials-with-groovy.html)
  
+- [Jcasc1] (https://www.admin-magazine.com/Archive/2019/51/Jenkins-Configuration-as-Code)
+- [jcasc2] (https://www.admin-magazine.com/Articles/Jenkins-Configuration-as-Code/(offset)/3)

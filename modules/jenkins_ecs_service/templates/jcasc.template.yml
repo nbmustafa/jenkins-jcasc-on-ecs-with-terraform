@@ -5,6 +5,13 @@ jenkins:
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: false
+  # authorizationStrategy:
+  #   globalMatrix:
+  #     grantedPermissions:
+  #       - "Overall/Read:anonymous"
+  #       - "Job/Read:anonymous"
+  #       - "View/Read:anonymous"
+  #       - "Overall/Administer:authenticated"
   clouds:
     - ecs:
         cluster: "${ecs_cluster_arn}"
@@ -70,6 +77,17 @@ jenkins:
           properties:
             - mailer:
                 emailAddress: "admin@admin.com"
+  ## if we want ldap based auth
+  # securityRealm:
+  #   ldap:
+  #     configurations:
+  #       - groupMembershipStrategy:
+  #           fromUserRecord:
+  #             attributeName: "memberOf"
+  #         inhibitInferRootDN: false
+  #         rootDN: "dc=acme,dc=org"
+  #         server: "ldaps://ldap.acme.org:1636"
+
   slaveAgentPort: ${jnlp_port}
   updateCenter:
     sites:
@@ -149,3 +167,7 @@ jobs: # this requires the job-dsl plugin
           }
         }
       }
+  # - script: >
+  #     folder('test-job2')
+  
+  # - file: /usr/local/seedjob.groovy

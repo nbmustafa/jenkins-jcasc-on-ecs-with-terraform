@@ -8,6 +8,15 @@ This stack can be used as a starting point to build a production ready Jenkins o
 ## How it works
 This stack will deploy Jenkins Master on ECS Fargate. It uses a docker image based on the [official Jenkins](https://github.com/jenkinsci/docker). See `docker/` folder.
 
+![Architecture1](./doc/jenkins_ecs.png)
+Jenkins runs as ECS Service behind an Application Load Balancer. Optional, a nice domain can be set up through Route53. To make it secure, Jenkins supports multiple ways for authentication and authorization like SAML integration and the matrix authorization plugin.
+
+The agents run also as containers on the same ECS cluster and communicate back to the master through a Network Load Balancer. As the master runs as container, it’s likely the IP and port changes after a restart. Normally, that breaks the communication between agent and master, as the agent still tries to connect to the former IP/Port. With the NLB, we can provide a static address to the agents (needs to be configured) that doesn’t change. But, the Jenkins master needs to be registered not only to the ALB but also to the NLB.
+
+As Jenkins stores the configuration of the jobs and their runs on a file system, it needs some storage as well. the good news is that now EFS is supported by ECS. 
+
+
+
 The following main resources will be created:
  - An application load balancer in front of Jenkins.
  - A network load balancer for Agent -> Master communication. For more information about how Master <-> Agents communication works, see [this page](https://wiki.jenkins.io/display/JENKINS/Distributed+builds).

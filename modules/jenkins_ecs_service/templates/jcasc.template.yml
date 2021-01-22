@@ -97,6 +97,7 @@ jenkins:
     - all:
         name: "all"
   viewsTabBar: "standard"
+
 security:
   apiToken:
     creationOfLegacyTokenEnabled: false
@@ -106,6 +107,7 @@ security:
     useScriptSecurity: true
   sSHD:
     port: -1
+
 unclassified:
   bitbucketEndpointConfiguration:
     endpoints:
@@ -138,11 +140,13 @@ unclassified:
     useTls: false
   pollSCM:
     pollingThreadCount: 10
-tool:
+
+tool: # this is to install tool, example git, java sdk, etc
   git:
     installations:
       - home: "git"
         name: "Default"
+
 jobs: # this requires the job-dsl plugin
   - script: >
       pipelineJob('example') {
@@ -169,5 +173,20 @@ jobs: # this requires the job-dsl plugin
       }
   # - script: >
   #     folder('test-job2')
-  
+
+  - script: > 
+      job('Job_DSL_Seed') {
+        scm {
+          git {
+            remote {
+              url 'ssh://git@github.com:nashvan/jcasc-bootstrap.git'
+            }
+          }
+        }
+        steps {
+          jobDsl {
+            targets 'bootstrap/nonprod/jobs.groovy'
+          }
+        }
+      }
   # - file: /usr/local/seedjob.groovy

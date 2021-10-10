@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "allow_agents_to_jks_jnlp_port" {
   to_port           = var.master_jnlp_port
   protocol          = "tcp"
   type              = "ingress"
-  cidr_blocks       = list("${data.aws_network_interface.private_nlb_network_interface[count.index].private_ip}/32")
+  cidr_blocks       = tolist(["${data.aws_network_interface.private_nlb_network_interface[count.index].private_ip}/32"])
   description       = "From NLB to Jenkins Master JNLP via ENI ${data.aws_network_interface.private_nlb_network_interface[count.index].id}."
 }
 
@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "from_private_nlb_network_interfaces" {
   to_port           = var.master_listening_port
   protocol          = "tcp"
   type              = "ingress"
-  cidr_blocks       = list("${data.aws_network_interface.private_nlb_network_interface[count.index].private_ip}/32")
+  cidr_blocks       = tolist(["${data.aws_network_interface.private_nlb_network_interface[count.index].private_ip}/32"])
   description       = "From NLB to Jenkins Master HTTP via ENI ${data.aws_network_interface.private_nlb_network_interface[count.index].id}. Required for health check."
 }
 
